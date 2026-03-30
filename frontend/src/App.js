@@ -100,6 +100,7 @@ function App() {
 
   useEffect(() => {
     if (token && page === 'history') loadHistory();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token, page]);
 
   const loadHistory = async () => {
