@@ -1,14 +1,9 @@
-# auth.py — Login/Signup API Endpoints
-
 from fastapi import APIRouter, Header, HTTPException
 from pydantic import BaseModel
-from services.auth_service import (
-    create_user, login_user, verify_token
-)
+from services.auth_service import create_user, login_user, verify_token
 
 router = APIRouter()
 
-# ── Request Models ────────────────────────────
 class SignupRequest(BaseModel):
     name:     str
     email:    str
@@ -18,17 +13,11 @@ class LoginRequest(BaseModel):
     email:    str
     password: str
 
-# ── Signup ────────────────────────────────────
-@router.post("/auth/signup")
+@router.post("/signup")
 def signup(req: SignupRequest):
-    result = create_user(
-        req.name, req.email, req.password
-    )
+    result = create_user(req.name, req.email, req.password)
     if "error" in result:
-        raise HTTPException(
-            status_code=400,
-            detail=result["error"]
-        )
+        raise HTTPException(status_code=400, detail=result["error"])
     token = login_user(req.email, req.password)
     return {
         "status":  "success",
@@ -38,15 +27,11 @@ def signup(req: SignupRequest):
         "email":   req.email,
     }
 
-# ── Login ─────────────────────────────────────
-@router.post("/auth/login")
+@router.post("/login")
 def login(req: LoginRequest):
     result = login_user(req.email, req.password)
     if "error" in result:
-        raise HTTPException(
-            status_code=401,
-            detail=result["error"]
-        )
+        raise HTTPException(status_code=401, detail=result["error"])
     return {
         "status": "success",
         "token":  result["token"],
@@ -54,16 +39,12 @@ def login(req: LoginRequest):
         "email":  result["email"],
     }
 
-# ── Verify Token ──────────────────────────────
-@router.get("/auth/me")
+@router.get("/me")
 def get_me(authorization: str = Header(...)):
     token   = authorization.replace("Bearer ", "")
     payload = verify_token(token)
     if not payload:
-        raise HTTPException(
-            status_code=401,
-            detail="Invalid or expired token!"
-        )
+        raise HTTPException(status_code=401, detail="Invalid or expired token!")
     return {
         "email": payload["sub"],
         "name":  payload.get("name", ""),
