@@ -6,10 +6,17 @@ from routes.history import router as history_router
 
 app = FastAPI(title="PneumoAI API", version="2.0.0")
 
+origins = [
+    "https://pneumoai-h729.vercel.app",
+    "https://pneumoai-mcx3.vercel.app",
+    "http://localhost:3000",
+    "*"
+]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
