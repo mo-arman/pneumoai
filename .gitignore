@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+*.pth
+ml_model/data/
+ml_model/saved_model/
+node_modules/
+frontend/build/
+.env
+*.zip
+chest_xray/
+chest-xray-pneumonia.zip
