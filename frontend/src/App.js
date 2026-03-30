@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-const BASE_URL = 'https://pneumoai-4r9a.onrender.com';
+const Base_URL = 'https://pneumoai-4r9a.onrender.com';
 const THEMES = ['dark', 'light', 'ocean', 'purple'];
 const THEME_LABELS = {
   dark: '🌑 Dark', light: '☀️ Light',
