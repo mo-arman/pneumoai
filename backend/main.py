@@ -14,7 +14,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(auth_router, prefix="/auth")
+app.include_router(auth_router)
 app.include_router(predict_router)
 app.include_router(history_router)
 
