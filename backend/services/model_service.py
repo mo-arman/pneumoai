@@ -1,21 +1,26 @@
-# model_service.py — Fixed Version
-
 import torch
 import torch.nn as nn
 from torchvision import models, transforms
 from PIL import Image
 import io
 import os
+from huggingface_hub import hf_hub_download
 
-MODEL_PATH = os.path.join(
-    os.path.dirname(__file__),
-    "../../ml_model/saved_model/pneumonia_model.pth"
-)
+MODEL_PATH = "pneumonia_model.pth"
 CLASSES  = ["NORMAL", "PNEUMONIA"]
 IMG_SIZE = 224
 device   = torch.device("cpu")
 
-# ── Load Model ───────────────────────────────
+# ── Download model from Hugging Face if not exists ──
+if not os.path.exists(MODEL_PATH):
+    print("Downloading model from Hugging Face...")
+    MODEL_PATH = hf_hub_download(
+        repo_id="moharman/pneumoai-model",
+        filename="pneumonia_model.pth"
+    )
+    print("Model downloaded!")
+
+# ── Load Model ──
 model = models.resnet18(weights=None)
 model.fc = nn.Linear(model.fc.in_features, 2)
 model.load_state_dict(
@@ -24,7 +29,7 @@ model.load_state_dict(
 model.eval()
 print("✅ Model loaded successfully!")
 
-# ── Transform ────────────────────────────────
+# ── Transform ──
 transform = transforms.Compose([
     transforms.Resize((IMG_SIZE, IMG_SIZE)),
     transforms.ToTensor(),
@@ -33,7 +38,6 @@ transform = transforms.Compose([
 ])
 
 def predict_image(image_bytes: bytes) -> dict:
-    # ── Predict ──────────────────────────────
     image  = Image.open(
         io.BytesIO(image_bytes)
     ).convert("RGB")
@@ -48,7 +52,6 @@ def predict_image(image_bytes: bytes) -> dict:
     prediction = CLASSES[pred_idx]
     print(f"✅ Prediction: {prediction} ({confidence*100:.2f}%)")
 
-    # ── GradCAM ──────────────────────────────
     gradcam_img = None
     try:
         from services.gradcam_service import generate_gradcam
@@ -56,7 +59,7 @@ def predict_image(image_bytes: bytes) -> dict:
             model, image_bytes, pred_idx
         )
     except Exception as e:
-        print(f"❌ GradCAM error: {e}")
+        print(f"GradCAM error: {e}")
 
     return {
         "prediction":   prediction,
