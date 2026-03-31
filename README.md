@@ -4,7 +4,7 @@
 
 ![PneumoAI Banner](https://img.shields.io/badge/PneumoAI-Pneumonia%20Detection-blue?style=for-the-badge&logo=lungs)
 
-[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-pneumoai--h729.vercel.app-success?style=for-the-badge)](https://pneumoai-do4w.vercel.app)
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-pneumoai--do4w.vercel.app-success?style=for-the-badge)](https://pneumoai-do4w.vercel.app)
 [![Backend](https://img.shields.io/badge/🤗%20Backend-HuggingFace%20Spaces-yellow?style=for-the-badge)](https://moharman-pneumoaibackend.hf.space)
 [![GitHub](https://img.shields.io/badge/GitHub-mo--arman%2Fpneumoai-black?style=for-the-badge&logo=github)](https://github.com/mo-arman/pneumoai)
 
