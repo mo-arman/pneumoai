@@ -1,307 +1,274 @@
-# LifeOS AI — Your Personal AI Productivity OS
+# 🫁 PneumoAI — AI-Powered Pneumonia Detection System
 
 <div align="center">
 
-![LifeOS AI](https://img.shields.io/badge/LifeOS-AI%20Powered-6366f1?style=for-the-badge&logo=sparkles)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi)
-![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=next.js)
-![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![PneumoAI Banner](https://img.shields.io/badge/PneumoAI-Pneumonia%20Detection-blue?style=for-the-badge&logo=lungs)
 
-**A full-stack AI-powered personal productivity operating system built with FastAPI, Next.js, and LangChain.**
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-pneumoai--h729.vercel.app-success?style=for-the-badge)](https://pneumoai-h729.vercel.app)
+[![Backend](https://img.shields.io/badge/🤗%20Backend-HuggingFace%20Spaces-yellow?style=for-the-badge)](https://moharman-pneumoaibackend.hf.space)
+[![GitHub](https://img.shields.io/badge/GitHub-mo--arman%2Fpneumoai-black?style=for-the-badge&logo=github)](https://github.com/mo-arman/pneumoai)
 
-[🌐 Live Demo](https://lifeos-ai-ml9f.vercel.app) · [📖 API Docs](https://moharman-lifeos-backend.hf.space/api/docs) · [💻 GitHub](https://github.com/mo-arman/lifeos-ai)
+**A full-stack, production-grade AI web application that detects pneumonia from chest X-Ray images using Deep Learning.**
 
 </div>
 
 ---
 
-## 🚀 Overview
+## 📸 Screenshots
 
-LifeOS AI is a comprehensive personal productivity platform that leverages the power of AI agents to help you manage every aspect of your life — from tasks and finance to health tracking and team collaboration. Built with a modern tech stack, it features 6 specialized AI agents, real-time web search, multilingual support (Hindi/English/Hinglish), and 20+ integrated features.
+| Login Page | Analysis Page | Results |
+|------------|--------------|---------|
+| Auth with JWT | Upload X-Ray | AI Prediction + GradCAM |
+
+---
+
+## 🚀 Live URLs
+
+| Service | Platform | URL |
+|---------|----------|-----|
+| 🌐 Frontend | Vercel | https://pneumoai-h729.vercel.app |
+| ⚙️ Backend API | HuggingFace Spaces | https://moharman-pneumoaibackend.hf.space |
+| 📚 API Docs | FastAPI Swagger | https://moharman-pneumoaibackend.hf.space/docs |
+| 🤖 AI Model | HuggingFace Model Hub | https://huggingface.co/moharman/pneumoai-model |
 
 ---
 
 ## ✨ Features
 
-### 🤖 AI Agents
-| Agent | Capabilities |
-|-------|-------------|
-| **Task Agent** | Create, update, delete, and list tasks with natural language |
-| **Calendar Agent** | Schedule events, sync with Google Calendar |
-| **Finance Agent** | Track expenses, generate spending summaries |
-| **Email Agent** | Read, summarize, and send emails via Gmail |
-| **Study Agent** | Generate flashcards, create study plans |
-| **Research Agent** | Real-time web search powered by Tavily |
-
-### 📱 Core Features
-- **🧠 AI Chat** — Conversational AI with long-term memory and context awareness
-- **✅ Task Manager** — Full CRUD with priorities, due dates, and comments
-- **🗂️ Kanban Board** — Drag & drop task management with @dnd-kit
-- **📅 Calendar** — Event management with Google Calendar sync
-- **💰 Finance Tracker** — Expense tracking, budget alerts, and spending analytics
-- **📝 Rich Text Notes** — Full-featured editor with Tiptap
-- **📧 Gmail Integration** — AI-powered email summarization and compose
-- **🎙️ AI Meeting Notes** — Voice input + AI summarization with action items
-- **💪 Health & Sleep Tracker** — Daily health metrics and sleep quality monitoring
-- **📔 Mood Journal** — Daily mood tracking with AI-generated insights
-- **🌐 Language Translator** — 15 languages with voice output (TTS)
-- **📰 News Feed** — Real-time AI-powered personalized news
-- **📄 AI Resume Builder** — Professional CV generator with PDF export
-- **🎤 Voice Assistant** — Hands-free AI control with speech recognition
-- **🧾 Invoice Generator** — Professional invoices with PDF export
-- **🧠 Flashcards** — AI-generated study cards with spaced repetition
-- **⏱️ Pomodoro Timer** — Focus timer with SVG animation
-- **🔥 Habit Tracker** — 7-day habit grid tracking
-- **👥 Team Collaboration** — Real-time team chat, task assignment, invite system
-- **📊 Analytics** — AI-powered weekly reports with charts
-- **📱 WhatsApp Bot** — Full AI assistant via WhatsApp using Twilio
-- **🎨 6 Custom Themes** — Dark, Light, Purple, Green, Blue, Red
-
----
-
-## 🏗️ Architecture
-
-```
-lifeos/
-├── backend/                    # FastAPI Backend
-│   ├── app/
-│   │   ├── agents/            # 6 AI Agents (LangChain + Groq)
-│   │   │   ├── orchestrator.py  # Intent classification & routing
-│   │   │   ├── task_agent.py
-│   │   │   ├── calendar_agent.py
-│   │   │   ├── finance_agent.py
-│   │   │   ├── email_agent.py
-│   │   │   ├── study_agent.py
-│   │   │   └── research_agent.py
-│   │   ├── api/               # REST API endpoints
-│   │   ├── models/            # SQLAlchemy models
-│   │   ├── tools/             # LangChain tools
-│   │   ├── memory/            # Persistent memory system
-│   │   └── services/          # Gmail, LLM factory, Auth
-│   └── Dockerfile
-│
-└── frontend/                  # Next.js 16 Frontend
-    ├── app/
-    │   ├── dashboard/         # 20+ feature pages
-    │   └── (auth)/           # Login & Register
-    ├── components/
-    ├── hooks/
-    ├── lib/
-    └── store/                 # Zustand state management
-```
+- 🔐 **JWT Authentication** — Secure Signup/Login with token-based auth
+- 🫁 **AI Pneumonia Detection** — ResNet18 deep learning model trained on 5,856 chest X-Ray images
+- 🔥 **GradCAM Visualization** — Shows exactly where the AI focused on the X-Ray
+- 📋 **Patient History** — All scans saved to MongoDB with patient name, age, date
+- 🎨 **4 Themes** — Dark, Light, Ocean, Purple
+- 📱 **Fully Responsive** — Works on mobile, tablet, and desktop
+- ⚡ **Real-time Analysis** — Results in under 2 seconds
+- 🗑️ **Delete History** — Users can manage their scan history
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Backend
-| Technology | Purpose |
-|-----------|---------|
-| **FastAPI** | High-performance async REST API |
-| **LangChain + Groq** | AI agent framework (Llama 3.3 70B) |
-| **SQLAlchemy + SQLite** | Async database ORM |
-| **Google APIs** | Gmail & Calendar integration |
-| **Tavily** | Real-time web search |
-| **Twilio** | WhatsApp bot integration |
-| **JWT + PBKDF2** | Secure authentication |
-
 ### Frontend
 | Technology | Purpose |
 |-----------|---------|
-| **Next.js 16** | React framework with TypeScript |
-| **Tailwind CSS** | Utility-first styling |
-| **Zustand** | Lightweight state management |
-| **Recharts** | Data visualization & analytics |
-| **@dnd-kit** | Drag & drop Kanban board |
-| **Tiptap** | Rich text editor |
-| **jsPDF** | PDF export functionality |
+| React 19 | UI Framework |
+| JavaScript (ES6+) | Programming Language |
+| CSS3 | Styling & Animations |
+| LocalStorage | Token Persistence |
+
+### Backend
+| Technology | Purpose |
+|-----------|---------|
+| FastAPI | REST API Framework |
+| Python 3.10 | Programming Language |
+| JWT (python-jose) | Authentication |
+| Passlib + bcrypt | Password Hashing |
+| Uvicorn | ASGI Server |
+
+### AI/ML
+| Technology | Purpose |
+|-----------|---------|
+| PyTorch 2.1 | Deep Learning Framework |
+| ResNet18 | CNN Architecture (Transfer Learning) |
+| TorchVision | Image Transforms |
+| GradCAM | Model Explainability |
+| OpenCV | Image Processing |
+| Pillow | Image Handling |
+
+### Database & Deployment
+| Technology | Purpose |
+|-----------|---------|
+| MongoDB Atlas | Cloud Database |
+| Vercel | Frontend Hosting |
+| HuggingFace Spaces | Backend Hosting (Docker) |
+| HuggingFace Model Hub | AI Model Storage |
+| GitHub | Version Control |
 
 ---
 
-## 🚀 Getting Started
+## 📁 Project Structure
+
+```
+healthcare-prediction/
+│
+├── frontend/                    # React Frontend
+│   ├── public/
+│   │   ├── index.html
+│   │   └── favicon.png
+│   ├── src/
+│   │   ├── App.js              # Main App Component
+│   │   ├── App.css             # Styles + Themes
+│   │   └── index.js
+│   └── package.json
+│
+├── backend/                     # FastAPI Backend
+│   ├── main.py                 # App Entry Point + CORS
+│   ├── requirements.txt        # Python Dependencies
+│   ├── Dockerfile              # Docker Config for HuggingFace
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   ├── auth.py             # Signup/Login Routes
+│   │   ├── predict.py          # AI Prediction Route
+│   │   └── history.py          # Scan History Routes
+│   └── services/
+│       ├── auth_service.py     # JWT + User Management
+│       ├── model_service.py    # AI Model Loading + Inference
+│       ├── gradcam_service.py  # GradCAM Visualization
+│       └── history_service.py  # MongoDB Operations
+│
+├── ml_model/                    # ML Training Code
+│   ├── train.py                # ResNet18 Training Script
+│   ├── evaluate.py             # Model Evaluation
+│   └── training_results.png    # Training Graphs
+│
+├── render.yaml                  # Render Config (optional)
+├── .gitignore
+└── README.md
+```
+
+---
+
+## 🧠 AI Model Details
+
+| Property | Value |
+|----------|-------|
+| Architecture | ResNet18 (Transfer Learning) |
+| Dataset | Chest X-Ray Images (Pneumonia) — Kaggle |
+| Training Images | 5,216 |
+| Validation Images | 16 |
+| Test Images | 624 |
+| Classes | NORMAL, PNEUMONIA |
+| Accuracy | ~88% |
+| Input Size | 224 × 224 RGB |
+| Framework | PyTorch 2.1 |
+
+### Training Configuration
+```python
+Optimizer:     Adam
+Learning Rate: 0.001
+Batch Size:    32
+Epochs:        10
+Loss:          CrossEntropyLoss
+```
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| POST | `/auth/signup` | Create new account | ❌ |
+| POST | `/auth/login` | Login & get JWT token | ❌ |
+| GET | `/auth/me` | Get current user | ✅ |
+| POST | `/predict` | Analyze chest X-Ray | ✅ Optional |
+| GET | `/history` | Get scan history | ✅ |
+| DELETE | `/history/{id}` | Delete a record | ✅ |
+| GET | `/` | Health check | ❌ |
+| GET | `/docs` | Swagger API Docs | ❌ |
+
+---
+
+## ⚙️ Local Setup
 
 ### Prerequisites
-- Python 3.11+
-- Node.js 18+
-- API keys: Groq, Tavily, (optional) Twilio
+- Python 3.10+
+- Node.js 20+
+- MongoDB (local or Atlas)
 
-### Backend Setup
-
+### 1. Clone Repository
 ```bash
-# Clone the repository
-git clone https://github.com/mo-arman/lifeos-ai.git
-cd lifeos-ai/backend
+git clone https://github.com/mo-arman/pneumoai.git
+cd pneumoai
+```
 
-# Create virtual environment
+### 2. Backend Setup
+```bash
+cd backend
 python -m venv venv
-venv\Scripts\activate  # Windows
-source venv/bin/activate  # Linux/Mac
-
-# Install dependencies
+venv\Scripts\activate      # Windows
 pip install -r requirements.txt
-
-# Configure environment
-cp .env.example .env
-# Edit .env with your API keys
-
-# Run the server
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-### Frontend Setup
-
-```bash
-cd ../frontend
-
-# Install dependencies
-npm install
-
-# Configure environment
-echo "NEXT_PUBLIC_API_URL=http://localhost:8000" > .env.local
-
-# Run development server
-npm run dev
-```
-
-### Environment Variables
-
+### 3. Create .env file in backend/
 ```env
-# Backend (.env)
-SECRET_KEY=your-secret-key
-ACTIVE_LLM=groq
-GROQ_API_KEY=your-groq-api-key
-TAVILY_API_KEY=your-tavily-api-key
-TWILIO_ACCOUNT_SID=your-twilio-sid
-TWILIO_AUTH_TOKEN=your-twilio-token
-TWILIO_WHATSAPP_NUMBER=+14155238886
-ALLOWED_ORIGINS=http://localhost:3000
+MONGODB_URL=mongodb+srv://your_connection_string
+SECRET_KEY=your_secret_key
+ALGORITHM=HS256
+```
 
-# Frontend (.env.local)
-NEXT_PUBLIC_API_URL=http://localhost:8000
+### 4. Run Backend
+```bash
+uvicorn main:app --reload
+# Backend runs on http://localhost:8000
+```
+
+### 5. Frontend Setup
+```bash
+cd frontend
+npm install
+npm start
+# Frontend runs on http://localhost:3000
 ```
 
 ---
 
-## 🌐 Deployment
+## 🌐 Deployment Architecture
 
-| Service | Platform | URL |
-|---------|----------|-----|
-| **Frontend** | Vercel | [lifeos-ai-ml9f.vercel.app](https://lifeos-ai-ml9f.vercel.app) |
-| **Backend** | Hugging Face Spaces | [moharman-lifeos-backend.hf.space](https://moharman-lifeos-backend.hf.space) |
-
----
-
-## 📸 Screenshots
-
-### Dashboard
-- AI-powered daily briefing
-- Quick stats: tasks, events, expenses
-- Recent activity feed
-
-### AI Chat
-- Natural language task management
-- Hindi/English/Hinglish support
-- Long-term memory retention
-
-### Kanban Board
-- Drag & drop task management
-- Priority-based color coding
-- Real-time updates
-
----
-
-## 🤖 AI Capabilities
-
-### Multi-Language Support
-LifeOS AI automatically detects and responds in:
-- **English** — Full feature support
-- **Hindi** — हिंदी में बात करें
-- **Hinglish** — Mix kar ke bolo
-
-### Long-term Memory
-The AI remembers:
-- Your name and preferences
-- Past conversations and context
-- Personal goals and habits
-- Work and study patterns
-
-### Example Commands
 ```
-"Add task: Submit assignment by Friday"
-"मेरे tasks दिखाओ"
-"I spent 200 rupees on lunch"
-"Schedule a meeting tomorrow at 3pm"
-"Research latest AI trends"
-"Show my expenses this month"
+User Browser
+     │
+     ▼
+┌─────────────┐
+│   Vercel    │  ← React Frontend
+│  (Frontend) │
+└─────────────┘
+     │
+     │ API Calls (HTTPS)
+     ▼
+┌──────────────────┐
+│  HuggingFace     │  ← FastAPI Backend (Docker)
+│  Spaces          │
+│  (Backend)       │
+└──────────────────┘
+     │              │
+     │              ▼
+     │    ┌──────────────────┐
+     │    │  HuggingFace     │  ← AI Model (.pth file)
+     │    │  Model Hub       │
+     │    └──────────────────┘
+     ▼
+┌─────────────┐
+│   MongoDB   │  ← Cloud Database
+│   Atlas     │
+└─────────────┘
 ```
 
 ---
 
-## 📊 API Documentation
-
-Once running, visit:
-- **Swagger UI:** `http://localhost:8000/api/docs`
-- **ReDoc:** `http://localhost:8000/api/redoc`
-
-### Key Endpoints
-```
-POST /api/auth/register     — User registration
-POST /api/auth/login        — User authentication
-POST /api/chat/message      — AI chat message
-GET  /api/tasks             — List tasks
-POST /api/tasks             — Create task
-GET  /api/finance/expenses  — List expenses
-POST /api/finance/expenses  — Track expense
-GET  /api/calendar          — List events
-POST /api/meetings          — Create meeting
-POST /api/meetings/{id}/summarize — AI summarize
-```
-
----
-
-## 🔐 Security
-
-- **JWT Authentication** with secure token rotation
-- **PBKDF2 password hashing** with salt
-- **CORS protection** with allowed origins
-- **Environment variables** for all sensitive data
-- **SQL injection prevention** via SQLAlchemy ORM
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Mobile app (React Native)
-- [ ] Real-time WebSocket chat
-- [ ] Multi-user workspace
-- [ ] AI image generation
-- [ ] Plugin system
-- [ ] Self-hosted LLM support
-
----
-
-## 👨‍💻 Author
+## 👨‍💻 Developer
 
 **Mohammad Arman**
-
-Aspiring AI Engineer passionate about building intelligent systems that make life easier.
-
 - GitHub: [@mo-arman](https://github.com/mo-arman)
-- Project: [LifeOS AI](https://lifeos-ai-ml9f.vercel.app)
+- Email: moharman3818@gmail.com
+
+---
+
+## ⚠️ Disclaimer
+
+> This application is built for **educational purposes only**. It should **NOT** be used as a substitute for professional medical diagnosis. Always consult a qualified doctor for medical advice.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ---
 
 <div align="center">
 
-**Built with ❤️ using FastAPI, Next.js, and LangChain**
+**🫁 PneumoAI — Built with PyTorch + FastAPI + React**
 
-⭐ Star this repo if you find it useful!
+⭐ Star this repo if you found it helpful!
 
 </div>
